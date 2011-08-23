@@ -33,7 +33,9 @@ static av_cold int init(AVFilterContext *ctx, const char *args, void *opaque)
 		return -1;
 	}
 
-	strncpy( plugin_name, args, 255 );
+	// Jeff - Aug 23, 2011
+	//strncpy( plugin_name, args, 255 );
+	av_strlcpy( plugin_name, args, 255 );
 	
 	// find the first ':'
 	pos = strchr( plugin_name, ':' );
@@ -81,8 +83,9 @@ static int query_formats(AVFilterContext *ctx)
 	    PIX_FMT_RGB24, PIX_FMT_NONE
 	};
     
-	avfilter_set_common_formats(ctx, avfilter_make_format_list(pix_fmts));
-
+    // Jeff - Aug 23, 2011 - avfilter_set_common_formats no longer supported
+	//avfilter_set_common_formats(ctx, avfilter_make_format_list(pix_fmts));
+	avfilter_set_common_pixel_formats(ctx, avfilter_make_format_list(pix_fmts));
 	return 0;
 }
 

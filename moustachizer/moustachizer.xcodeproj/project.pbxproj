@@ -3,37 +3,63 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 45;
+	objectVersion = 46;
 	objects = {
 
 /* Begin PBXBuildFile section */
 		1F22C78A13625785004F3461 /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F22C78313625785004F3461 /* main.cpp */; };
 		1F22C78B13625785004F3461 /* moustachizer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F22C78413625785004F3461 /* moustachizer.cpp */; };
-		1F22C79113625814004F3461 /* Face.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F22C78D13625814004F3461 /* Face.cpp */; };
-		1F22C79213625814004F3461 /* Face.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F22C78E13625814004F3461 /* Face.h */; };
-		1F22C79313625814004F3461 /* FaceTracker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 1F22C78F13625814004F3461 /* FaceTracker.cpp */; };
-		1F22C79413625814004F3461 /* FaceTracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F22C79013625814004F3461 /* FaceTracker.h */; };
 		1F6196DE13157824005A036C /* libopencv_calib3d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6196D913157824005A036C /* libopencv_calib3d.dylib */; };
 		1F6196DF13157824005A036C /* libopencv_core.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6196DA13157824005A036C /* libopencv_core.dylib */; };
 		1F6196E013157824005A036C /* libopencv_features2d.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6196DB13157824005A036C /* libopencv_features2d.dylib */; };
 		1F6196E113157824005A036C /* libopencv_highgui.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6196DC13157824005A036C /* libopencv_highgui.dylib */; };
 		1F6196E213157824005A036C /* libopencv_imgproc.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F6196DD13157824005A036C /* libopencv_imgproc.dylib */; };
 		1F61979013157D25005A036C /* libopencv_objdetect.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F61978F13157D25005A036C /* libopencv_objdetect.dylib */; };
+		1F8292B2140407FE00BC2C1B /* CLM.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292A2140407FE00BC2C1B /* CLM.cc */; };
+		1F8292B3140407FE00BC2C1B /* CLM.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292A3140407FE00BC2C1B /* CLM.h */; };
+		1F8292B4140407FE00BC2C1B /* FCheck.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292A4140407FE00BC2C1B /* FCheck.cc */; };
+		1F8292B5140407FE00BC2C1B /* FCheck.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292A5140407FE00BC2C1B /* FCheck.h */; };
+		1F8292B6140407FE00BC2C1B /* FDet.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292A6140407FE00BC2C1B /* FDet.cc */; };
+		1F8292B7140407FE00BC2C1B /* FDet.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292A7140407FE00BC2C1B /* FDet.h */; };
+		1F8292B8140407FE00BC2C1B /* IO.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292A8140407FE00BC2C1B /* IO.cc */; };
+		1F8292B9140407FE00BC2C1B /* IO.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292A9140407FE00BC2C1B /* IO.h */; };
+		1F8292BA140407FE00BC2C1B /* Patch.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292AA140407FE00BC2C1B /* Patch.cc */; };
+		1F8292BB140407FE00BC2C1B /* Patch.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292AB140407FE00BC2C1B /* Patch.h */; };
+		1F8292BC140407FE00BC2C1B /* PAW.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292AC140407FE00BC2C1B /* PAW.cc */; };
+		1F8292BD140407FE00BC2C1B /* PAW.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292AD140407FE00BC2C1B /* PAW.h */; };
+		1F8292BE140407FE00BC2C1B /* PDM.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292AE140407FE00BC2C1B /* PDM.cc */; };
+		1F8292BF140407FE00BC2C1B /* PDM.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292AF140407FE00BC2C1B /* PDM.h */; };
+		1F8292C0140407FE00BC2C1B /* Tracker.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F8292B0140407FE00BC2C1B /* Tracker.cc */; };
+		1F8292C1140407FE00BC2C1B /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292B1140407FE00BC2C1B /* Tracker.h */; };
+		1F8292C51404086000BC2C1B /* moustachizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292C41404086000BC2C1B /* moustachizer.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1F22C78313625785004F3461 /* main.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = main.cpp; path = src/main.cpp; sourceTree = "<group>"; };
 		1F22C78413625785004F3461 /* moustachizer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = moustachizer.cpp; path = src/moustachizer.cpp; sourceTree = "<group>"; };
-		1F22C78D13625814004F3461 /* Face.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Face.cpp; path = ../src/Tools/Face.cpp; sourceTree = "<group>"; };
-		1F22C78E13625814004F3461 /* Face.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Face.h; path = ../src/Tools/Face.h; sourceTree = "<group>"; };
-		1F22C78F13625814004F3461 /* FaceTracker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FaceTracker.cpp; path = ../src/Tools/FaceTracker.cpp; sourceTree = "<group>"; };
-		1F22C79013625814004F3461 /* FaceTracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FaceTracker.h; path = ../src/Tools/FaceTracker.h; sourceTree = "<group>"; };
 		1F6196D913157824005A036C /* libopencv_calib3d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_calib3d.dylib; path = /usr/local/lib/libopencv_calib3d.dylib; sourceTree = "<absolute>"; };
 		1F6196DA13157824005A036C /* libopencv_core.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.dylib; path = /usr/local/lib/libopencv_core.dylib; sourceTree = "<absolute>"; };
 		1F6196DB13157824005A036C /* libopencv_features2d.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_features2d.dylib; path = /usr/local/lib/libopencv_features2d.dylib; sourceTree = "<absolute>"; };
 		1F6196DC13157824005A036C /* libopencv_highgui.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.dylib; path = /usr/local/lib/libopencv_highgui.dylib; sourceTree = "<absolute>"; };
 		1F6196DD13157824005A036C /* libopencv_imgproc.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.dylib; path = /usr/local/lib/libopencv_imgproc.dylib; sourceTree = "<absolute>"; };
 		1F61978F13157D25005A036C /* libopencv_objdetect.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_objdetect.dylib; path = /usr/local/lib/libopencv_objdetect.dylib; sourceTree = "<absolute>"; };
+		1F8292A2140407FE00BC2C1B /* CLM.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = CLM.cc; path = src/FaceTracker/lib/CLM.cc; sourceTree = "<group>"; };
+		1F8292A3140407FE00BC2C1B /* CLM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CLM.h; path = src/FaceTracker/lib/CLM.h; sourceTree = "<group>"; };
+		1F8292A4140407FE00BC2C1B /* FCheck.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FCheck.cc; path = src/FaceTracker/lib/FCheck.cc; sourceTree = "<group>"; };
+		1F8292A5140407FE00BC2C1B /* FCheck.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FCheck.h; path = src/FaceTracker/lib/FCheck.h; sourceTree = "<group>"; };
+		1F8292A6140407FE00BC2C1B /* FDet.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = FDet.cc; path = src/FaceTracker/lib/FDet.cc; sourceTree = "<group>"; };
+		1F8292A7140407FE00BC2C1B /* FDet.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = FDet.h; path = src/FaceTracker/lib/FDet.h; sourceTree = "<group>"; };
+		1F8292A8140407FE00BC2C1B /* IO.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = IO.cc; path = src/FaceTracker/lib/IO.cc; sourceTree = "<group>"; };
+		1F8292A9140407FE00BC2C1B /* IO.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = IO.h; path = src/FaceTracker/lib/IO.h; sourceTree = "<group>"; };
+		1F8292AA140407FE00BC2C1B /* Patch.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Patch.cc; path = src/FaceTracker/lib/Patch.cc; sourceTree = "<group>"; };
+		1F8292AB140407FE00BC2C1B /* Patch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Patch.h; path = src/FaceTracker/lib/Patch.h; sourceTree = "<group>"; };
+		1F8292AC140407FE00BC2C1B /* PAW.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PAW.cc; path = src/FaceTracker/lib/PAW.cc; sourceTree = "<group>"; };
+		1F8292AD140407FE00BC2C1B /* PAW.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PAW.h; path = src/FaceTracker/lib/PAW.h; sourceTree = "<group>"; };
+		1F8292AE140407FE00BC2C1B /* PDM.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = PDM.cc; path = src/FaceTracker/lib/PDM.cc; sourceTree = "<group>"; };
+		1F8292AF140407FE00BC2C1B /* PDM.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = PDM.h; path = src/FaceTracker/lib/PDM.h; sourceTree = "<group>"; };
+		1F8292B0140407FE00BC2C1B /* Tracker.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Tracker.cc; path = src/FaceTracker/lib/Tracker.cc; sourceTree = "<group>"; };
+		1F8292B1140407FE00BC2C1B /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = Tracker.h; path = src/FaceTracker/lib/Tracker.h; sourceTree = "<group>"; };
+		1F8292C41404086000BC2C1B /* moustachizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = moustachizer.h; path = src/moustachizer.h; sourceTree = "<group>"; };
 		D2AAC0630554660B00DB518D /* moustachizer.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = moustachizer.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -68,11 +94,9 @@
 			isa = PBXGroup;
 			children = (
 				1F22C78313625785004F3461 /* main.cpp */,
+				1F8292C41404086000BC2C1B /* moustachizer.h */,
 				1F22C78413625785004F3461 /* moustachizer.cpp */,
-				1F22C78D13625814004F3461 /* Face.cpp */,
-				1F22C78E13625814004F3461 /* Face.h */,
-				1F22C78F13625814004F3461 /* FaceTracker.cpp */,
-				1F22C79013625814004F3461 /* FaceTracker.h */,
+				1F8292A1140407F100BC2C1B /* FaceTracker */,
 			);
 			name = Source;
 			sourceTree = "<group>";
@@ -99,6 +123,29 @@
 			path = /Users/jeff/Desktop/moustachizer;
 			sourceTree = "<absolute>";
 		};
+		1F8292A1140407F100BC2C1B /* FaceTracker */ = {
+			isa = PBXGroup;
+			children = (
+				1F8292A2140407FE00BC2C1B /* CLM.cc */,
+				1F8292A3140407FE00BC2C1B /* CLM.h */,
+				1F8292A4140407FE00BC2C1B /* FCheck.cc */,
+				1F8292A5140407FE00BC2C1B /* FCheck.h */,
+				1F8292A6140407FE00BC2C1B /* FDet.cc */,
+				1F8292A7140407FE00BC2C1B /* FDet.h */,
+				1F8292A8140407FE00BC2C1B /* IO.cc */,
+				1F8292A9140407FE00BC2C1B /* IO.h */,
+				1F8292AA140407FE00BC2C1B /* Patch.cc */,
+				1F8292AB140407FE00BC2C1B /* Patch.h */,
+				1F8292AC140407FE00BC2C1B /* PAW.cc */,
+				1F8292AD140407FE00BC2C1B /* PAW.h */,
+				1F8292AE140407FE00BC2C1B /* PDM.cc */,
+				1F8292AF140407FE00BC2C1B /* PDM.h */,
+				1F8292B0140407FE00BC2C1B /* Tracker.cc */,
+				1F8292B1140407FE00BC2C1B /* Tracker.h */,
+			);
+			name = FaceTracker;
+			sourceTree = "<group>";
+		};
 /* End PBXGroup section */
 
 /* Begin PBXHeadersBuildPhase section */
@@ -106,8 +153,15 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				1F22C79213625814004F3461 /* Face.h in Headers */,
-				1F22C79413625814004F3461 /* FaceTracker.h in Headers */,
+				1F8292B3140407FE00BC2C1B /* CLM.h in Headers */,
+				1F8292B5140407FE00BC2C1B /* FCheck.h in Headers */,
+				1F8292B7140407FE00BC2C1B /* FDet.h in Headers */,
+				1F8292B9140407FE00BC2C1B /* IO.h in Headers */,
+				1F8292BB140407FE00BC2C1B /* Patch.h in Headers */,
+				1F8292BD140407FE00BC2C1B /* PAW.h in Headers */,
+				1F8292BF140407FE00BC2C1B /* PDM.h in Headers */,
+				1F8292C1140407FE00BC2C1B /* Tracker.h in Headers */,
+				1F8292C51404086000BC2C1B /* moustachizer.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -136,8 +190,11 @@
 /* Begin PBXProject section */
 		08FB7793FE84155DC02AAC07 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0410;
+			};
 			buildConfigurationList = 1DEB914E08733D8E0010E9CD /* Build configuration list for PBXProject "moustachizer" */;
-			compatibilityVersion = "Xcode 3.1";
+			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 1;
 			knownRegions = (
@@ -162,8 +219,14 @@
 			files = (
 				1F22C78A13625785004F3461 /* main.cpp in Sources */,
 				1F22C78B13625785004F3461 /* moustachizer.cpp in Sources */,
-				1F22C79113625814004F3461 /* Face.cpp in Sources */,
-				1F22C79313625814004F3461 /* FaceTracker.cpp in Sources */,
+				1F8292B2140407FE00BC2C1B /* CLM.cc in Sources */,
+				1F8292B4140407FE00BC2C1B /* FCheck.cc in Sources */,
+				1F8292B6140407FE00BC2C1B /* FDet.cc in Sources */,
+				1F8292B8140407FE00BC2C1B /* IO.cc in Sources */,
+				1F8292BA140407FE00BC2C1B /* Patch.cc in Sources */,
+				1F8292BC140407FE00BC2C1B /* PAW.cc in Sources */,
+				1F8292BE140407FE00BC2C1B /* PDM.cc in Sources */,
+				1F8292C0140407FE00BC2C1B /* Tracker.cc in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -177,15 +240,14 @@
 				COPY_PHASE_STRIP = NO;
 				EXECUTABLE_PREFIX = "";
 				GCC_DYNAMIC_NO_PIC = NO;
-				GCC_ENABLE_FIX_AND_CONTINUE = YES;
 				GCC_MODEL_TUNING = G5;
 				GCC_OPTIMIZATION_LEVEL = 0;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				INSTALL_PATH = /usr/local/lib;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/opt/local/lib,
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/src/FaceTracker/lib\"",
 				);
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = moustachizer;
 			};
@@ -198,12 +260,12 @@
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
 				EXECUTABLE_PREFIX = "";
 				GCC_MODEL_TUNING = G5;
-				HEADER_SEARCH_PATHS = /usr/local/include;
-				INSTALL_PATH = /usr/local/lib;
-				LIBRARY_SEARCH_PATHS = (
-					"$(inherited)",
-					/opt/local/lib,
+				HEADER_SEARCH_PATHS = (
+					/usr/local/include,
+					"\"$(SRCROOT)/src/FaceTracker/lib\"",
 				);
+				INSTALL_PATH = /usr/local/lib;
+				LIBRARY_SEARCH_PATHS = "$(inherited)";
 				OTHER_CFLAGS = "";
 				PRODUCT_NAME = moustachizer;
 			};
@@ -218,8 +280,7 @@
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
 				ONLY_ACTIVE_ARCH = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Debug;
 		};
@@ -230,8 +291,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				PREBINDING = NO;
-				SDKROOT = macosx10.6;
+				SDKROOT = macosx;
 			};
 			name = Release;
 		};

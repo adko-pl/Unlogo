@@ -7,90 +7,199 @@
  *
  */
 
-
-#include "FaceTracker.h"
-
-using namespace std;
-using namespace cv;
-
-class Moustachizer {
-public:
-    Moustachizer() {};
-    ~Moustachizer() {};
-    int init(const char* argstr);
-    void process(Mat frame);
-	
-private:
-    FaceTracker faceTracker;
-    Mat stache, mask;
-};
+#include "moustachizer.h"
 
 
 
 // ------------------------------
 int Moustachizer::init(const char* argstr) {
 
-	faceTracker.init();
+    stache = imread("images/moustache2.png", 1);
+    mask = imread("images/moustache2_mask.png", 1);
 	
-	const char* fileName = "images/moustache4.jpg";
-	stache = imread(fileName, 1);
-	
-	// OpenCV can't load 4 channel images, which is a huge pain
-	// so I am pulling out the Value channel from the moustache image
-	// to use as a mask for drawing the moustache into the main frame.
-	Mat hsvimg;
-	cvtColor(stache, hsvimg, CV_RGB2HSV);
-	vector<Mat> hsvchannels;
-	split(hsvimg, hsvchannels);	
-	bitwise_not(hsvchannels[2], mask); 
-	erode(mask, mask, Mat(), Point(-1,-1), 4);
-	dilate(mask, mask, Mat(), Point(-1,-1), 2);
-	
+	string ftFile = "model/face2.tracker";
+	string triFile = "model/face.tri";
+	string conFile = "model/face.con";
+    fcheck = true;  // check for whether the tracking failed
+    scale = 1; 
+    fpd = -1;       // how often to skip frames
+    show = false;
+    
+    //set other tracking parameters
+    wSize1.resize(1); 
+    wSize1[0] = 7;
+    wSize2.resize(3); 
+    wSize2[0] = 11; 
+    wSize2[1] = 9; 
+    wSize2[2] = 7;
+    
+    nIter = 20;  // [1-25] 1 is fast and inaccurate, 25 is slow and accurate
+    clamp=1;    // [0-4] 1 gives a very loose fit, 4 gives a very tight fit
+    //fTol=0.01;  // [.01-1] match tolerance
+    fTol=0.5;
+    model.Load(ftFile.c_str());
+    tri=IO::LoadTri(triFile.c_str());
+    con=IO::LoadCon(conFile.c_str());
+    
+
+    failed = true;
+    
+    
+    /*
+    fps=0;
+    t1,t0 = cvGetTickCount(); 
+    fnum=0;
+    */
+    
 	return 0;
 }
 
 // ------------------------------
 void Moustachizer::process(Mat frame) {
 	
+    /*
 	//circle(frame, Point(300,300), 300, Scalar(255,0,0), 3);
 	Mat grayFrame = frame.clone();
 	cvtColor(frame, grayFrame, CV_RGB2GRAY);
 	equalizeHist(grayFrame, grayFrame);
 	imshow("grayFrame", grayFrame);
-	faceTracker.search( grayFrame );
+    */
 	
-	
-	
-	for(int i=0; i<faceTracker.faces.size(); i++)
-	{
-		Face face = faceTracker.faces[i];
-		face.draw( frame );
+    
+    if(scale == 1)
+        im = frame; 
+    else 
+        cv::resize(frame,im,cv::Size(scale*frame.cols, scale*frame.rows));
+    
+    //cv::flip(im, im, 1); 
+    cv::cvtColor(im, gray, CV_BGR2GRAY);
+    
+
+    //track this image
+    std::vector<int> wSize; 
+    if(failed)
+        wSize = wSize2; 
+    else 
+        wSize = wSize1; 
+    
+    if(model.Track(gray,wSize,fpd,nIter,clamp,fTol,fcheck) == 0)
+    {
+       // int idx = model._clm.GetViewIdx(); 
+        failed = false;
+        //Draw(im, model._shape,con,tri,model._clm._visi[idx]);
+        
+        
+        int n = model._shape.rows/2;
+        Point p1 = Point(model._shape.at<double>(48,0), model._shape.at<double>(48+n, 0));
+        Point p2 = Point(model._shape.at<double>(54,0), model._shape.at<double>(54+n, 0));
+        //cv::line(im,p1,p2,CV_RGB(0,255,0),1);
+        float width = p2.x - p1.x;
+        
+       
+        double angle = atan2(p2.y-p1.y, p2.x-p1.x) * 180 / 3.14159;
+     
+        //cout << "rotating " << angle << endl;
+        float scale =  width / stache.size().width / .75;
 		
-		float scale =  (float)face.boundingBox.width / stache.size().width;
-		
+
+        Mat stache_rotated = rotateImage(stache, 360-angle);
+        Mat mask_rotated = rotateImage(mask, 360-angle);
+        
 		Mat stache_resized;
 		Mat mask_resized;
-		resize(stache, stache_resized, Size(), scale, scale);
-		resize(mask, mask_resized, Size(), scale, scale);
+		resize(stache_rotated, stache_resized, Size(), scale, scale);
+		resize(mask_rotated, mask_resized, Size(), scale, scale);
 		
-		float xpos = face.boundingBox.x;
-		float ypos = face.boundingBox.y + (face.boundingBox.height * .60);
-		Rect pos = Rect(xpos, ypos, stache_resized.size().width, stache_resized.size().height);
-		
-		/*
-		 Rect frame = Rect(0, 0, input.size().width, input.size().height);
-		 Rect intersection = pos & frame;
-		 Mat fg = stache_resized(Rect(0,0,intersection.width,intersection.height));
-		 Mat bg = input(Rect(xpos,ypos,intersection.width,intersection.height));
-		 */
+		Rect pos = Rect(p1.x, p1.y-stache_resized.size().height, stache_resized.size().width, stache_resized.size().height);
 		
 		Mat bg = frame(pos);
-		stache_resized.copyTo(bg, mask_resized);	
-	}
-	
+		stache_resized.copyTo(bg, mask_resized);
+        
+    }
+    else
+    {
+        if(show)
+        {
+            cv::Mat R(im, cvRect(0,0,150,50)); 
+            R = cv::Scalar(0,0,255);
+        }
+        model.FrameReset(); 
+        failed = true;
+    } 
+
+    //show image and check for user input
+    imshow("Face Tracker",im); 
+    
+
 	//cvtColor(input, input, CV_GRAY2RGB);
 	imshow("preview", frame);
 	
 	cvWaitKey(1);
 }
 
+
+Mat Moustachizer::rotateImage(const Mat& source, double angle)
+{
+    Point2f src_center(source.cols/2.0F, source.rows/2.0F);
+    Mat rot_mat = getRotationMatrix2D(src_center, angle, 1.0);
+    Mat dst;
+    warpAffine(source, dst, rot_mat, source.size());
+    return dst;
+}
+
+void Moustachizer::Draw(cv::Mat &image,cv::Mat &shape,cv::Mat &con,cv::Mat &tri,cv::Mat &visi)
+{
+    int i,n = shape.rows/2; cv::Point p1,p2; cv::Scalar c;
+    
+    //draw triangulation
+    c = CV_RGB(0,0,0);
+    for(i = 0; i < tri.rows; i++)
+    {
+        if(visi.at<int>(tri.at<int>(i,0),0) == 0 ||
+           visi.at<int>(tri.at<int>(i,1),0) == 0 ||
+           visi.at<int>(tri.at<int>(i,2),0) == 0)continue;
+        p1 = cv::Point(shape.at<double>(tri.at<int>(i,0),0),
+                       shape.at<double>(tri.at<int>(i,0)+n,0));
+        p2 = cv::Point(shape.at<double>(tri.at<int>(i,1),0),
+                       shape.at<double>(tri.at<int>(i,1)+n,0));
+        cv::line(image,p1,p2,c);
+        p1 = cv::Point(shape.at<double>(tri.at<int>(i,0),0),
+                       shape.at<double>(tri.at<int>(i,0)+n,0));
+        p2 = cv::Point(shape.at<double>(tri.at<int>(i,2),0),
+                       shape.at<double>(tri.at<int>(i,2)+n,0));
+        cv::line(image,p1,p2,c);
+        p1 = cv::Point(shape.at<double>(tri.at<int>(i,2),0),
+                       shape.at<double>(tri.at<int>(i,2)+n,0));
+        p2 = cv::Point(shape.at<double>(tri.at<int>(i,1),0),
+                       shape.at<double>(tri.at<int>(i,1)+n,0));
+        cv::line(image,p1,p2,c);
+    }
+    
+    
+    //draw connections
+    c = CV_RGB(0,0,255);
+    for(i = 0; i < con.cols; i++)
+    {
+        if(visi.at<int>(con.at<int>(0,i),0) == 0 ||
+           visi.at<int>(con.at<int>(1,i),0) == 0)continue;
+        p1 = cv::Point(shape.at<double>(con.at<int>(0,i),0),
+                       shape.at<double>(con.at<int>(0,i)+n,0));
+        p2 = cv::Point(shape.at<double>(con.at<int>(1,i),0),
+                       shape.at<double>(con.at<int>(1,i)+n,0));
+        cv::line(image,p1,p2,c,1);
+    }
+    
+   
+    
+    //draw points
+    for(i = 0; i < n; i++)
+    {    
+        if(visi.at<int>(i,0) == 0)continue;
+        p1 = cv::Point(shape.at<double>(i,0),shape.at<double>(i+n,0));
+        c = CV_RGB(255,0,0); 
+        cv::circle(image,p1,2,c);
+    }
+
+    
+    return;
+}
