@@ -18,7 +18,7 @@ extern "C"
 {
 	Moustachizer* plugin;
 	
-	int init( const char* argstr )
+	int init( char* argstr )
 	{
 		try {
 			plugin = new Moustachizer();

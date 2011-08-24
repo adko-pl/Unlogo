@@ -12,14 +12,42 @@
 
 
 // ------------------------------
-int Moustachizer::init(const char* argstr) {
+int Moustachizer::init(char* argstr) {
 
-    stache = imread("images/moustache2.png", 1);
-    mask = imread("images/moustache2_mask.png", 1);
+    char* tok = strtok(argstr, ":");
+    vector<string> args;
+    while ( tok != NULL ) {
+        args.push_back( tok );
+        tok = strtok(NULL, ":");
+    }
+    if(args.size() < 4)
+    {
+        cout << "must supply 4 arguments" << endl;
+        return 1;
+    }
+    
+    cout << "moustache: " << args[1] << endl;
+    cout << "mask: " << args[2] << endl;
+    cout << "model dir: " << args[3] << endl;
+    
+    stache = imread(args[1], 1);
+    mask = imread(args[2], 1);
 	
-	string ftFile = "model/face2.tracker";
-	string triFile = "model/face.tri";
-	string conFile = "model/face.con";
+    if(stache.empty()) 
+    {
+        cout << "couldn't find " << args[1] << endl;
+        return -1;
+    }
+    
+    if(mask.empty()) 
+    {
+        cout << "couldn't find " << args[2] << endl;
+        return -1;
+    }
+    
+	string ftFile = args[3]+"/face2.tracker";
+	string triFile = args[3]+"/face.tri";
+	string conFile = args[3]+"/face.con";
     fcheck = true;  // check for whether the tracking failed
     scale = 1; 
     fpd = -1;       // how often to skip frames

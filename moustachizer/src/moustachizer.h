@@ -18,7 +18,7 @@ class Moustachizer {
 	public:
         Moustachizer() {};
 		~Moustachizer() {};
-		int init(const char* argstr);
+		int init(char* argstr);
 		void process(Mat frame);
         void Draw(cv::Mat &image,cv::Mat &shape,cv::Mat &con,cv::Mat &tri,cv::Mat &visi);
         Mat rotateImage(const Mat& source, double angle);
