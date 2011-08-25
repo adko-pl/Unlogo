@@ -22,17 +22,17 @@ endif
 ifeq ($(config),debug)
   OBJDIR     = obj/Debug
   TARGETDIR  = .
-  TARGET     = $(TARGETDIR)/libmoustachizer.a
+  TARGET     = $(TARGETDIR)/libmoustachizer.dylib
   DEFINES   += -DDEBUG
   INCLUDES  += -Isrc -Isrc/FaceTracker -I/usr/local/include -I/usr/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -g
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fPIC
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -L/opt/local/lib -L/usr/local/lib
+  LDFLAGS   += -dynamiclib -flat_namespace -L/usr/local/lib
   LIBS      += -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_objdetect
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -44,17 +44,17 @@ endif
 ifeq ($(config),release)
   OBJDIR     = obj/Release
   TARGETDIR  = .
-  TARGET     = $(TARGETDIR)/libmoustachizer.a
+  TARGET     = $(TARGETDIR)/libmoustachizer.dylib
   DEFINES   += -DNDEBUG
   INCLUDES  += -Isrc -Isrc/FaceTracker -I/usr/local/include -I/usr/include
   CPPFLAGS  += -MMD -MP $(DEFINES) $(INCLUDES)
-  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2
+  CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -fPIC
   CXXFLAGS  += $(CFLAGS) 
-  LDFLAGS   += -Wl,-x -L/opt/local/lib -L/usr/local/lib
+  LDFLAGS   += -Wl,-x -dynamiclib -flat_namespace -L/usr/local/lib
   LIBS      += -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_objdetect
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
-  LINKCMD    = $(AR) -rcs $(TARGET) $(OBJECTS)
+  LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
   define PREBUILDCMDS
   endef
   define PRELINKCMDS
@@ -66,6 +66,14 @@ endif
 OBJECTS := \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/moustachizer.o \
+	$(OBJDIR)/CLM.o \
+	$(OBJDIR)/FCheck.o \
+	$(OBJDIR)/FDet.o \
+	$(OBJDIR)/IO.o \
+	$(OBJDIR)/Patch.o \
+	$(OBJDIR)/PAW.o \
+	$(OBJDIR)/PDM.o \
+	$(OBJDIR)/Tracker.o \
 
 RESOURCES := \
 
@@ -130,6 +138,30 @@ $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/moustachizer.o: src/moustachizer.cpp
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/CLM.o: src/FaceTracker/CLM.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/FCheck.o: src/FaceTracker/FCheck.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/FDet.o: src/FaceTracker/FDet.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/IO.o: src/FaceTracker/IO.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Patch.o: src/FaceTracker/Patch.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/PAW.o: src/FaceTracker/PAW.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/PDM.o: src/FaceTracker/PDM.cc
+	@echo $(notdir $<)
+	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
+$(OBJDIR)/Tracker.o: src/FaceTracker/Tracker.cc
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 

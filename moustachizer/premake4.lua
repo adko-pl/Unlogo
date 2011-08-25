@@ -6,18 +6,17 @@ solution "Moustachizer"
 	configurations { "Debug", "Release" }
 
 project "moustachizer"
-	kind "StaticLib"
+	kind "SharedLib"
 	language "C++"
 	files {  
 		"src/*.h", "src/*.cpp",
-		"src/FaceTracker/*.h", "src/FaceTracker/*.cpp",
+		"src/FaceTracker/*.h", "src/FaceTracker/*.cc",
 	}
 	links { 
 		"opencv_core",  "opencv_highgui", 
 		"opencv_imgproc", "opencv_objdetect",
 	}
 	libdirs { 
-		"/opt/local/lib", 
 		"/usr/local/lib", 
 		os.findlib("opencv_core"),
 	}
