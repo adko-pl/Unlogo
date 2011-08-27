@@ -156,11 +156,11 @@ void Moustachizer::process(Mat frame) {
     } 
 
     //show image and check for user input
-    imshow("Face Tracker",im); 
+    //imshow("Face Tracker",im); 
     
 
 	//cvtColor(input, input, CV_GRAY2RGB);
-	imshow("preview", frame);
+	//imshow("preview", frame);
 	
 	cvWaitKey(1);
 }

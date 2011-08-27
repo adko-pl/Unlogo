@@ -9,6 +9,7 @@
 #include "libavutil/common.h"
 #include "libavutil/mem.h"
 #include "libavutil/pixdesc.h"
+#include "libavutil/avstring.h"
 
 #include <dlfcn.h>
 

@@ -47,3 +47,4 @@ out.mov
 tests/
 videos/
 *.xml.gz
+moustachizer/libmoustachizer.dylib
