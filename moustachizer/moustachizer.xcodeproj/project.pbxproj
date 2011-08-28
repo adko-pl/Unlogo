@@ -26,10 +26,11 @@
 		1F37F9C914058127006F033D /* Tracker.cc in Sources */ = {isa = PBXBuildFile; fileRef = 1F37F9B914058127006F033D /* Tracker.cc */; };
 		1F37F9CA14058127006F033D /* Tracker.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F37F9BA14058127006F033D /* Tracker.h */; };
 		1F37F9EB1405E9BA006F033D /* libopencv_core.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F37F9E61405E9BA006F033D /* libopencv_core.2.3.1.dylib */; };
-		1F37F9ED1405E9BA006F033D /* libopencv_highgui.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F37F9E81405E9BA006F033D /* libopencv_highgui.2.3.1.dylib */; };
 		1F37F9EE1405E9BA006F033D /* libopencv_imgproc.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F37F9E91405E9BA006F033D /* libopencv_imgproc.2.3.1.dylib */; };
 		1F7A7ECF1406805F007036EF /* libopencv_objdetect.2.3.1.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 1F7A7ECE1406805F007036EF /* libopencv_objdetect.2.3.1.dylib */; };
 		1F8292C51404086000BC2C1B /* moustachizer.h in Headers */ = {isa = PBXBuildFile; fileRef = 1F8292C41404086000BC2C1B /* moustachizer.h */; };
+		1FEE777C140AC25A00B625B7 /* stb_image.c in Sources */ = {isa = PBXBuildFile; fileRef = 1FEE777B140AC25A00B625B7 /* stb_image.c */; };
+		1FEE7780140AC2C800B625B7 /* stb_image.h in Headers */ = {isa = PBXBuildFile; fileRef = 1FEE777F140AC2C800B625B7 /* stb_image.h */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -52,10 +53,11 @@
 		1F37F9B914058127006F033D /* Tracker.cc */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Tracker.cc; sourceTree = "<group>"; };
 		1F37F9BA14058127006F033D /* Tracker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Tracker.h; sourceTree = "<group>"; };
 		1F37F9E61405E9BA006F033D /* libopencv_core.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_core.2.3.1.dylib; path = ../../../../../usr/local/lib/libopencv_core.2.3.1.dylib; sourceTree = "<group>"; };
-		1F37F9E81405E9BA006F033D /* libopencv_highgui.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_highgui.2.3.1.dylib; path = ../../../../../usr/local/lib/libopencv_highgui.2.3.1.dylib; sourceTree = "<group>"; };
 		1F37F9E91405E9BA006F033D /* libopencv_imgproc.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_imgproc.2.3.1.dylib; path = ../../../../../usr/local/lib/libopencv_imgproc.2.3.1.dylib; sourceTree = "<group>"; };
 		1F7A7ECE1406805F007036EF /* libopencv_objdetect.2.3.1.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libopencv_objdetect.2.3.1.dylib; path = /usr/local/lib/libopencv_objdetect.2.3.1.dylib; sourceTree = "<absolute>"; };
 		1F8292C41404086000BC2C1B /* moustachizer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = moustachizer.h; path = src/moustachizer.h; sourceTree = "<group>"; };
+		1FEE777B140AC25A00B625B7 /* stb_image.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = stb_image.c; path = src/stb_image.c; sourceTree = "<group>"; };
+		1FEE777F140AC2C800B625B7 /* stb_image.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = stb_image.h; path = src/stb_image.h; sourceTree = "<group>"; };
 		D2AAC0630554660B00DB518D /* moustachizer.dylib */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.dylib"; includeInIndex = 0; path = moustachizer.dylib; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -65,7 +67,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				1F37F9EB1405E9BA006F033D /* libopencv_core.2.3.1.dylib in Frameworks */,
-				1F37F9ED1405E9BA006F033D /* libopencv_highgui.2.3.1.dylib in Frameworks */,
 				1F37F9EE1405E9BA006F033D /* libopencv_imgproc.2.3.1.dylib in Frameworks */,
 				1F7A7ECF1406805F007036EF /* libopencv_objdetect.2.3.1.dylib in Frameworks */,
 			);
@@ -80,7 +81,6 @@
 				08FB7795FE84155DC02AAC07 /* Source */,
 				1F7A7ECE1406805F007036EF /* libopencv_objdetect.2.3.1.dylib */,
 				1F37F9E61405E9BA006F033D /* libopencv_core.2.3.1.dylib */,
-				1F37F9E81405E9BA006F033D /* libopencv_highgui.2.3.1.dylib */,
 				1F37F9E91405E9BA006F033D /* libopencv_imgproc.2.3.1.dylib */,
 				1AB674ADFE9D54B511CA2CBB /* Products */,
 			);
@@ -93,6 +93,8 @@
 				1F22C78313625785004F3461 /* main.cpp */,
 				1F8292C41404086000BC2C1B /* moustachizer.h */,
 				1F22C78413625785004F3461 /* moustachizer.cpp */,
+				1FEE777F140AC2C800B625B7 /* stb_image.h */,
+				1FEE777B140AC25A00B625B7 /* stb_image.c */,
 				1F37F9AA14058127006F033D /* FaceTracker */,
 			);
 			name = Source;
@@ -146,6 +148,7 @@
 				1F37F9C614058127006F033D /* PAW.h in Headers */,
 				1F37F9C814058127006F033D /* PDM.h in Headers */,
 				1F37F9CA14058127006F033D /* Tracker.h in Headers */,
+				1FEE7780140AC2C800B625B7 /* stb_image.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -211,6 +214,7 @@
 				1F37F9C514058127006F033D /* PAW.cc in Sources */,
 				1F37F9C714058127006F033D /* PDM.cc in Sources */,
 				1F37F9C914058127006F033D /* Tracker.cc in Sources */,
+				1FEE777C140AC25A00B625B7 /* stb_image.c in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

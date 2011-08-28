@@ -14,6 +14,10 @@ using namespace cv;
 #include "Tracker.h"
 using namespace FACETRACKER;
 
+#include "stb_image.h"
+
+
+
 class Moustachizer {
 	public:
         Moustachizer() {};
@@ -45,6 +49,7 @@ class Moustachizer {
         //int64 t1,t0; 
         //int fnum;
         int idx;
-    
+        unsigned char *stache_data;
+        unsigned char *mask_data;
     
 };

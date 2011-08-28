@@ -11,7 +11,6 @@
 #include "opencv2/core/core.hpp"
 #include "opencv2/imgproc/imgproc.hpp"
 #include "opencv2/objdetect/objdetect.hpp"
-#include "opencv2/highgui/highgui.hpp"
 #include "moustachizer.h"
 
 extern "C" 
@@ -47,12 +46,7 @@ extern "C"
 		for(int i=0; i<4; i++) {
 			memcpy(dst[i], src[i], sizeof(uint8_t) * src_stride[i] * height);
 		}
-		
-        int c = cvWaitKey(1);
-        if( (char)c == 27 )
-		{
-            exit(0);
-		}	
+
 		return 0;
 	}
 	

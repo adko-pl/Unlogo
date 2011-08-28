@@ -48,3 +48,5 @@ tests/
 videos/
 *.xml.gz
 moustachizer/libmoustachizer.dylib
+
+moustachizer/avesataniweb.mov

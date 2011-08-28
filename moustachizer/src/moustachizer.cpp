@@ -9,8 +9,6 @@
 
 #include "moustachizer.h"
 
-
-
 // ------------------------------
 int Moustachizer::init(char* argstr) {
 
@@ -30,15 +28,51 @@ int Moustachizer::init(char* argstr) {
     cout << "mask: " << args[2] << endl;
     cout << "model dir: " << args[3] << endl;
     
-    stache = imread(args[1], 1);
-    mask = imread(args[2], 1);
-	
+    //stache = imread(args[1], 1);
+    //mask = imread(args[2], 1);
+    int x,y,n,type;
+  
+    
+    stache_data = stbi_load(args[1].c_str(), &x, &y, &n, 3);
+    if(stache_data==NULL)
+    {
+        cout << stbi_failure_reason() << endl;
+        return -1;
+    }
+    switch(n)
+    {
+        case 1: type=CV_8UC1; break;
+        case 3: type=CV_8UC3; break;
+        case 4: type=CV_8UC4; break;
+    }
+    
+    stache = Mat(Size(x,y), CV_8UC3, stache_data);
+    //imshow("stache", stache);
+    
     if(stache.empty()) 
     {
         cout << "couldn't find " << args[1] << endl;
         return -1;
     }
     
+    
+    
+    mask_data = stbi_load(args[2].c_str(), &x, &y, &n, 3);
+    if(mask_data==NULL)
+    {
+        cout << stbi_failure_reason() << endl;
+        return -1;
+    }
+    
+    switch(n)
+    {
+        case 1: type=CV_8UC1; break;
+        case 3: type=CV_8UC3; break;
+        case 4: type=CV_8UC4; break;
+    }
+    
+    mask = Mat(Size(x,y), CV_8UC3, mask_data);
+   
     if(mask.empty()) 
     {
         cout << "couldn't find " << args[2] << endl;
@@ -71,14 +105,7 @@ int Moustachizer::init(char* argstr) {
     
 
     failed = true;
-    
-    
-    /*
-    fps=0;
-    t1,t0 = cvGetTickCount(); 
-    fnum=0;
-    */
-    
+
 	return 0;
 }
 
@@ -114,7 +141,7 @@ void Moustachizer::process(Mat frame) {
     {
        // int idx = model._clm.GetViewIdx(); 
         failed = false;
-        //Draw(im, model._shape,con,tri,model._clm._visi[idx]);
+       // Draw(im, model._shape,con,tri,model._clm._visi[idx]);
         
         
         int n = model._shape.rows/2;
@@ -162,7 +189,7 @@ void Moustachizer::process(Mat frame) {
 	//cvtColor(input, input, CV_GRAY2RGB);
 	//imshow("preview", frame);
 	
-	cvWaitKey(1);
+	//cvWaitKey(1);
 }
 
 
