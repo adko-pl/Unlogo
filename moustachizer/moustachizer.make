@@ -29,7 +29,7 @@ ifeq ($(config),debug)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -g -fPIC
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -dynamiclib -flat_namespace -L/usr/local/lib
-  LIBS      += -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_objdetect
+  LIBS      += -lopencv_core -lopencv_imgproc -lopencv_objdetect
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -51,7 +51,7 @@ ifeq ($(config),release)
   CFLAGS    += $(CPPFLAGS) $(ARCH) -O2 -fPIC
   CXXFLAGS  += $(CFLAGS) 
   LDFLAGS   += -Wl,-x -dynamiclib -flat_namespace -L/usr/local/lib
-  LIBS      += -lopencv_core -lopencv_highgui -lopencv_imgproc -lopencv_objdetect
+  LIBS      += -lopencv_core -lopencv_imgproc -lopencv_objdetect
   RESFLAGS  += $(DEFINES) $(INCLUDES) 
   LDDEPS    += 
   LINKCMD    = $(CXX) -o $(TARGET) $(OBJECTS) $(LDFLAGS) $(RESOURCES) $(ARCH) $(LIBS)
@@ -64,6 +64,7 @@ ifeq ($(config),release)
 endif
 
 OBJECTS := \
+	$(OBJDIR)/stb_image.o \
 	$(OBJDIR)/main.o \
 	$(OBJDIR)/moustachizer.o \
 	$(OBJDIR)/CLM.o \
@@ -134,6 +135,9 @@ $(GCH): $(PCH)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"
 endif
 
+$(OBJDIR)/stb_image.o: src/stb_image.c
+	@echo $(notdir $<)
+	$(SILENT) $(CC) $(CFLAGS) -o "$@" -c "$<"
 $(OBJDIR)/main.o: src/main.cpp
 	@echo $(notdir $<)
 	$(SILENT) $(CXX) $(CXXFLAGS) -o "$@" -c "$<"

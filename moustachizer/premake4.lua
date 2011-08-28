@@ -9,12 +9,16 @@ project "moustachizer"
 	kind "SharedLib"
 	language "C++"
 	files {  
-		"src/*.h", "src/*.cpp",
-		"src/FaceTracker/*.h", "src/FaceTracker/*.cc",
+		"src/*.h",
+		"src/*.c",
+		"src/*.cpp",
+		"src/FaceTracker/*.h", 
+		"src/FaceTracker/*.cc",
 	}
 	links { 
-		"opencv_core",  "opencv_highgui", 
-		"opencv_imgproc", "opencv_objdetect",
+		"opencv_core", 
+		"opencv_imgproc", 
+		"opencv_objdetect",
 	}
 	libdirs { 
 		"/usr/local/lib", 
