@@ -75,6 +75,8 @@ static av_cold int init(AVFilterContext *ctx, const char *args, void *opaque)
 		return -1;
 	}
 
+  args = pos;
+
 	return plugin->init( args );
 }
 
